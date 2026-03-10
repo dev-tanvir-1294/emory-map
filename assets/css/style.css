@@ -1,0 +1,302 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap");
+
+.peachtree-plugin-wrapper {
+  --primary: #c8102e;
+  --primary-hover: #a00d25;
+  --secondary: #1d3557;
+  --accent: #457b9d;
+  --bg-main: #f0f2f5;
+  --text-main: #1a1a1a;
+  --text-muted: #64748b;
+  --white: #ffffff;
+  --glass: rgba(255, 255, 255, 0.8);
+  --border: rgba(226, 232, 240, 0.8);
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  
+  font-family: "Outfit", sans-serif;
+  color: var(--text-main);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+.peachtree-plugin-wrapper * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Layout */
+.peachtree-plugin-wrapper .boxed-wrapper {
+  max-width: 1240px;
+  margin: 40px auto;
+  background: var(--bg-main);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+}
+
+.peachtree-plugin-wrapper .search-section {
+  padding: 30px;
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  z-index: 20;
+}
+
+.peachtree-plugin-wrapper .search-input-container {
+  display: flex;
+  gap: 15px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.peachtree-plugin-wrapper .search-input-container input {
+  flex: 1;
+  padding: 14px 24px;
+  border: 2px solid var(--border);
+  border-radius: var(--radius-md);
+  font-size: 16px;
+  font-family: inherit;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background: var(--white);
+}
+
+.peachtree-plugin-wrapper .search-input-container input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(200, 16, 46, 0.1);
+}
+
+.peachtree-plugin-wrapper .btn {
+  padding: 12px 24px;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  border: none;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.peachtree-plugin-wrapper .btn-primary {
+  background: var(--primary);
+  color: var(--white);
+}
+
+.peachtree-plugin-wrapper .btn-primary:hover {
+  background: var(--primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(200, 16, 46, 0.3);
+}
+
+/* Main Container */
+.peachtree-plugin-wrapper .main-container {
+  display: flex;
+  height: 750px;
+  position: relative;
+}
+
+/* Sidebar */
+.peachtree-plugin-wrapper .sidebar {
+  width: 420px;
+  background: var(--white);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  z-index: 10;
+}
+
+.peachtree-plugin-wrapper .location-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 10px;
+}
+
+.peachtree-plugin-wrapper .location-card {
+  margin-bottom: 12px;
+  padding: 24px;
+  border-radius: var(--radius-md);
+  background: var(--white);
+  border: 1px solid transparent;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  position: relative;
+}
+
+.peachtree-plugin-wrapper .location-card:hover {
+  background: var(--bg-main);
+  border-color: var(--border);
+  transform: translateX(5px);
+}
+
+.peachtree-plugin-wrapper .location-card.active {
+  background: var(--white);
+  border-color: var(--primary);
+  box-shadow: var(--shadow-md);
+}
+
+.peachtree-plugin-wrapper .location-card h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--secondary);
+  margin-bottom: 8px;
+}
+
+.peachtree-plugin-wrapper .rating-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  background: rgba(249, 168, 37, 0.1);
+  color: #f9a825;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.peachtree-plugin-wrapper .info-row {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 10px;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.peachtree-plugin-wrapper .info-row i {
+  color: var(--accent);
+  width: 16px;
+  margin-top: 3px;
+}
+
+.peachtree-plugin-wrapper .info-row a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.peachtree-plugin-wrapper .info-row a:hover {
+  color: var(--primary);
+}
+
+/* Time Slots */
+.peachtree-plugin-wrapper .time-slots-container {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px dashed var(--border);
+}
+
+.peachtree-plugin-wrapper .time-slots-title {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.peachtree-plugin-wrapper .slots-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.peachtree-plugin-wrapper .slot-btn {
+  padding: 8px;
+  text-align: center;
+  background: var(--bg-main);
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--secondary);
+  transition: all 0.2s ease;
+}
+
+.peachtree-plugin-wrapper .slot-btn:hover {
+  background: var(--secondary);
+  color: var(--white);
+}
+
+/* Map */
+.peachtree-plugin-wrapper .map-container {
+  flex: 1;
+  position: relative;
+}
+
+.peachtree-plugin-wrapper #map {
+  width: 100%;
+  height: 100%;
+}
+
+/* Custom Markers & Popups */
+.leaflet-popup-content-wrapper {
+  border-radius: var(--radius-md);
+  padding: 10px;
+  box-shadow: var(--shadow-md);
+}
+
+.leaflet-popup-content b {
+  font-size: 16px;
+  color: var(--secondary);
+  display: block;
+  margin-bottom: 5px;
+}
+
+/* Custom Scrollbar */
+.peachtree-plugin-wrapper .location-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.peachtree-plugin-wrapper .location-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.peachtree-plugin-wrapper .location-list::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 10px;
+}
+
+.peachtree-plugin-wrapper .location-list::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+/* Responsiveness */
+@media (max-width: 1024px) {
+  .peachtree-plugin-wrapper .sidebar {
+    width: 350px;
+  }
+}
+
+@media (max-width: 768px) {
+  .peachtree-plugin-wrapper .main-container {
+    flex-direction: column-reverse;
+    height: auto;
+  }
+  
+  .peachtree-plugin-wrapper .sidebar {
+    width: 100%;
+    height: 500px;
+    border-right: none;
+    border-top: 1px solid var(--border);
+  }
+  
+  .peachtree-plugin-wrapper .map-container {
+    height: 400px;
+  }
+  
+  .peachtree-plugin-wrapper .search-section {
+    padding: 20px;
+  }
+  
+  .peachtree-plugin-wrapper .search-input-container {
+    flex-direction: column;
+  }
+}
