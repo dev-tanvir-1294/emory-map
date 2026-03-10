@@ -3,7 +3,7 @@
  * Plugin Name: Peachtree Location Finder
  * Description: A premium, interactive location finder with dynamic Custom Post Types.
  * Version: 1.1.0
- * Author: Antigravity
+ * Author: Tanvir ahmed
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
