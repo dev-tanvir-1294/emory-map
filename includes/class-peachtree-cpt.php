@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Peachtree Location Finder CPT & Meta Boxes
  */
@@ -65,39 +66,53 @@ class Peachtree_CPT {
 
         wp_nonce_field( 'peachtree_location_nonce_action', 'peachtree_location_nonce' );
         ?>
-        <style>
-            .peachtree-meta-row { margin-bottom: 20px; }
-            .peachtree-meta-row label { display: block; font-weight: bold; margin-bottom: 5px; }
-            .peachtree-meta-row input { width: 100%; padding: 8px; }
-        </style>
-        <div class="peachtree-meta-row">
-            <label for="map_address">Full Address</label>
-            <input type="text" id="map_address" name="map_address" value="<?php echo esc_attr( $address ); ?>" placeholder="e.g. 3540 Cobb Pkwy NW, Acworth, GA 30101">
-        </div>
-        <div class="peachtree-meta-row">
-            <label for="map_phone">Phone Number</label>
-            <input type="text" id="map_phone" name="map_phone" value="<?php echo esc_attr( $phone ); ?>" placeholder="e.g. 770-974-3911">
-        </div>
-        <div class="peachtree-meta-row">
-            <label for="map_rating">Google Rating (e.g. 4.8)</label>
-            <input type="text" id="map_rating" name="map_rating" value="<?php echo esc_attr( $rating ); ?>">
-        </div>
-        <div style="display: flex; gap: 20px;">
-            <div class="peachtree-meta-row" style="flex: 1;">
-                <label for="map_lat">Latitude</label>
-                <input type="text" id="map_lat" name="map_lat" value="<?php echo esc_attr( $lat ); ?>">
-            </div>
-            <div class="peachtree-meta-row" style="flex: 1;">
-                <label for="map_lng">Longitude</label>
-                <input type="text" id="map_lng" name="map_lng" value="<?php echo esc_attr( $lng ); ?>">
-            </div>
-        </div>
-        <div class="peachtree-meta-row">
-            <label for="map_hours">Operating Hours</label>
-            <input type="text" id="map_hours" name="map_hours" value="<?php echo esc_attr( $hours ); ?>" placeholder="e.g. 08:00 am - 08:00 pm">
-        </div>
-        <p class="description">Latitude/Longitude can be found using Google Maps or online coordinate finders.</p>
-        <?php
+<style>
+.peachtree-meta-row {
+    margin-bottom: 20px;
+}
+
+.peachtree-meta-row label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.peachtree-meta-row input {
+    width: 100%;
+    padding: 8px;
+}
+</style>
+<div class="peachtree-meta-row">
+    <label for="map_address">Full Address</label>
+    <input type="text" id="map_address" name="map_address" value="<?php echo esc_attr( $address ); ?>"
+        placeholder="e.g. 3540 Cobb Pkwy NW, Acworth, GA 30101">
+</div>
+<div class="peachtree-meta-row">
+    <label for="map_phone">Phone Number</label>
+    <input type="text" id="map_phone" name="map_phone" value="<?php echo esc_attr( $phone ); ?>"
+        placeholder="e.g. 770-974-3911">
+</div>
+<div class="peachtree-meta-row">
+    <label for="map_rating">Google Rating (e.g. 4.8)</label>
+    <input type="text" id="map_rating" name="map_rating" value="<?php echo esc_attr( $rating ); ?>">
+</div>
+<div style="display: flex; gap: 20px;">
+    <div class="peachtree-meta-row" style="flex: 1;">
+        <label for="map_lat">Latitude</label>
+        <input type="text" id="map_lat" name="map_lat" value="<?php echo esc_attr( $lat ); ?>">
+    </div>
+    <div class="peachtree-meta-row" style="flex: 1;">
+        <label for="map_lng">Longitude</label>
+        <input type="text" id="map_lng" name="map_lng" value="<?php echo esc_attr( $lng ); ?>">
+    </div>
+</div>
+<div class="peachtree-meta-row">
+    <label for="map_hours">Operating Hours</label>
+    <input type="text" id="map_hours" name="map_hours" value="<?php echo esc_attr( $hours ); ?>"
+        placeholder="e.g. 08:00 am - 08:00 pm">
+</div>
+<p class="description">Latitude/Longitude can be found using Google Maps or online coordinate finders.</p>
+<?php
     }
 
     public function save_location_meta( $post_id ) {
