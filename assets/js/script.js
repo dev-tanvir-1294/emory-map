@@ -14,10 +14,12 @@ document.addEventListener("DOMContentLoaded", () => {
   L.control.zoom({ position: "topright" }).addTo(map);
 
   L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+    attribution:
+      '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
   }).addTo(map);
 
-  const locations = typeof peachtreeLocations !== "undefined" ? peachtreeLocations : [];
+  const locations =
+    typeof peachtreeLocations !== "undefined" ? peachtreeLocations : [];
   const locationList = document.getElementById("location-list");
 
   // Custom Icon
@@ -45,7 +47,9 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!loc.lat || !loc.lng) return;
 
       // Create Marker
-      const marker = L.marker([loc.lat, loc.lng], { icon: customIcon }).addTo(map);
+      const marker = L.marker([loc.lat, loc.lng], { icon: customIcon }).addTo(
+        map,
+      );
       marker.bindPopup(`
                 <div style="padding: 5px;">
                     <b style="font-size: 16px; display: block; margin-bottom: 5px;">${loc.name}</b>
@@ -58,42 +62,46 @@ document.addEventListener("DOMContentLoaded", () => {
       const card = document.createElement("div");
       card.className = "location-card";
       card.style.animationDelay = `${index * 0.1}s`; // Staggered entry
-      
-      card.innerHTML = `
-                <div class="rating-badge">
-                    <i class="fa fa-star"></i> ${loc.rating || "5.0"}
-                </div>
-                <h3>${loc.name}</h3>
-                <div class="info-row">
-                    <i class="fa fa-map-marker-alt"></i>
-                    <span>${loc.address}</span>
-                </div>
-                <div class="info-row">
-                    <i class="fa fa-phone"></i>
-                    <a href="tel:${loc.phone}">${loc.phone}</a>
-                </div>
-                <div class="info-row">
-                    <i class="fa fa-clock"></i>
-                    <span>${loc.hours}</span>
-                </div>
-                
-                <div class="time-slots-container">
-                    <div class="time-slots-title">Available Tomorrow</div>
-                    <div class="slots-grid">
-                        <div class="slot-btn">08:30 AM</div>
-                        <div class="slot-btn">09:15 AM</div>
-                        <div class="slot-btn">+ MORE</div>
-                    </div>
-                </div>
-                
-                <button class="btn btn-primary" style="width: 100%; margin-top: 20px; justify-content: center;">
-                    Book Appointment
-                </button>
-            `;
+
+      // card.innerHTML = `
+      //           <div class="rating-badge">
+      //               <i class="fa fa-star"></i> ${loc.rating || "5.0"}
+      //           </div>
+      //           <h3>${loc.name}</h3>
+      //           <div class="info-row">
+      //               <i class="fa fa-map-marker-alt"></i>
+      //               <span>${loc.address}</span>
+      //           </div>
+      //           <div class="info-row">
+      //               <i class="fa fa-phone"></i>
+      //               <a href="tel:${loc.phone}">${loc.phone}</a>
+      //           </div>
+      //           <div class="info-row">
+      //               <i class="fa fa-clock"></i>
+      //               <span>${loc.hours}</span>
+      //           </div>
+
+      //           <div class="time-slots-container">
+      //               <div class="time-slots-title">Available Tomorrow</div>
+      //               <div class="slots-grid">
+      //                   <div class="slot-btn">08:30 AM</div>
+      //                   <div class="slot-btn">09:15 AM</div>
+      //                   <div class="slot-btn">+ MORE</div>
+      //               </div>
+      //           </div>
+
+      //           <button class="btn btn-primary" style="width: 100%; margin-top: 20px; justify-content: center;">
+      //               Book Appointment
+      //           </button>
+      //       `;
+
+      card.innerHTML = buildLocationCardHTML(loc, index);
 
       card.addEventListener("click", () => {
         // Handle UI state
-        document.querySelectorAll(".location-card").forEach((c) => c.classList.remove("active"));
+        document
+          .querySelectorAll(".location-card")
+          .forEach((c) => c.classList.remove("active"));
         card.classList.add("active");
 
         // Handle Map state
@@ -120,7 +128,7 @@ document.addEventListener("DOMContentLoaded", () => {
     locateBtn.addEventListener("click", () => {
       map.locate({ setView: true, maxZoom: 16 });
     });
-    
+
     map.on("locationfound", (e) => {
       L.circle(e.latlng, e.accuracy).addTo(map);
     });
@@ -130,6 +138,40 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  function buildLocationCardHTML(loc, index) {
+    return `
+    <div class="rating-badge">
+        <i class="fa fa-star"></i> ${loc.rating || "5.0"}
+    </div>
+    <h3>${loc.name}</h3>
+    <div class="info-row">
+        <i class="fa fa-map-marker-alt"></i>
+        <span>${loc.address}</span>
+    </div>
+    <div class="info-row">
+        <i class="fa fa-phone"></i>
+        <a href="tel:${loc.phone}">${loc.phone}</a>
+    </div>
+    <div class="info-row">
+        <i class="fa fa-clock"></i>
+        <span>${loc.hours}</span>
+    </div>
+    
+    <div class="time-slots-container">
+        <div class="time-slots-title">Available Tomorrow</div>
+        <div class="slots-grid">
+            <div class="slot-btn">08:30 AM</div>
+            <div class="slot-btn">09:15 AM</div>
+            <div class="slot-btn">+ MORE</div>
+        </div>
+    </div>
+    
+    <button class="btn btn-primary" style="width: 100%; margin-top: 20px; justify-content: center;">
+        Book Appointment
+    </button>
+  `;
+  }
+
   // Initial Render
   renderLocations(locations);
 
@@ -137,7 +179,7 @@ document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("resize", () => {
     map.invalidateSize();
   });
-  
+
   // Final map refresh after load
   setTimeout(() => {
     map.invalidateSize();
