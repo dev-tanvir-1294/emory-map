@@ -10,7 +10,7 @@
 if (! defined('ABSPATH')) {
     exit;
 }
-        
+
 
 
 define('PEACHTREE_PLUGIN_DIR', plugin_dir_path(__FILE__));
@@ -53,8 +53,4 @@ function peachtree_location_finder_init()
 {
     Peachtree_Location_Finder_Main::get_instance();
 }
-<<<<<<< HEAD
 add_action('plugins_loaded', 'peachtree_location_finder_init');
-=======
-add_action('plugins_loaded', 'peachtree_location_finder_init');
->>>>>>> 3c1c243462f5096915bb21a90837c2c3f6c1eaa8
