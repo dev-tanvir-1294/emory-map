@@ -12,10 +12,17 @@ class Peachtree_Assets
 
     public function __construct()
     {
+<<<<<<< HEAD
         // Frontend assets
         add_action('wp_enqueue_scripts', array($this, 'enqueue_frontend'));
 
         // Admin assets (placeholder - extend as needed)
+=======
+  
+        add_action('wp_enqueue_scripts', array($this, 'enqueue_frontend'));
+
+        
+>>>>>>> 3c1c243462f5096915bb21a90837c2c3f6c1eaa8
         add_action('admin_enqueue_scripts', array($this, 'enqueue_admin'));
     }
 
@@ -73,4 +80,8 @@ class Peachtree_Assets
     {
         // example: wp_enqueue_style( 'peachtree-admin', PEACHTREE_PLUGIN_URL . 'assets/css/admin.css' );
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 3c1c243462f5096915bb21a90837c2c3f6c1eaa8
