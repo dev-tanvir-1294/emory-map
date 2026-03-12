@@ -9,8 +9,7 @@
 
 if (! defined('ABSPATH')) {
     exit;
-}
-
+}   
 
 
 define('PEACHTREE_PLUGIN_DIR', plugin_dir_path(__FILE__));
